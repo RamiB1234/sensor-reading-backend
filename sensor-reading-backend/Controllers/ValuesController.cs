@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using sensor_reading_backend.Models.Repository;
 
 namespace sensor_reading_backend.Controllers
 {
@@ -10,6 +11,13 @@ namespace sensor_reading_backend.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private IReadingRepository readingRepository;
+
+        public ValuesController(IReadingRepository readingRepository)
+        {
+            this.readingRepository = readingRepository;
+        }
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
