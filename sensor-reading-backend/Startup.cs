@@ -39,6 +39,8 @@ namespace sensor_reading_backend
                     UseRecommendedIsolationLevel = true,
                     DisableGlobalLocks = true
                 }));
+            // Add the processing server as IHostedService
+            services.AddHangfireServer();
 
             // Mapping dependencies:
             services.AddTransient<IReadingRepository, EFReadingRepository>();
