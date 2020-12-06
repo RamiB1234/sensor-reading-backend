@@ -47,7 +47,7 @@ namespace sensor_reading_backend.Controllers
             var reading = new Reading
             {
                 Type = typeNumber == 1 ? "temperature" : "doorOpen",
-                Value = typeNumber == 1 ? randTemp.ToString() : randBool.ToString(),
+                Value = typeNumber == 1 ? randTemp.ToString()+ " C°" : randBool.ToString(),
                 Alert = typeNumber == 1 && ( randTemp <= -20 || randTemp >=15) ? true : false,
                 Timestamp = DateTime.Now
             };
