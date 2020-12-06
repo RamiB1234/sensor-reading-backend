@@ -13,5 +13,5 @@ In this project, random sensor readings are generated every 20 seconds and saved
 - Clone the repository
 - Open the `.sln` with `visual studio 2017` or higher with `ASP.NET CORE2.1` framework installed
 - Open the package manager console 
-- Navigate the project root folder, same level of `Statup.cs` and type the command `dotnet ef database update`, it will create a local DB using the `Migrations` folder
+- Navigate to the project root folder, the same level as `Statup.cs` and type the command `dotnet ef database update`, it will create a local DB using the `Migrations` folder
 - Run the project by pressing `CTRL` + `F5`, Visual Studio will attempt to install nuget packages ,create the localDB and create necessary tables
