@@ -3,7 +3,7 @@
 ## Introduction
 In this project, random sensor readings are generated every 20 seconds and saved to a localDB. There is an available `GET` http endpoint that provides the readings that were generated since the previous request. The previous request timestamp is stored in a static variable.
 
-## Tech Details
+## Features
 - Continually generates random sensor readings and saves it to a localDB
 - Provides an HTTP end-point (GET) which the front-end will use to consume readings
 - Replies to incoming requests with readings generated since the previous request.
