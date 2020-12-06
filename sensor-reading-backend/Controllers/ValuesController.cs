@@ -10,6 +10,8 @@ namespace sensor_reading_backend.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        public static DateTime lastRequestTime;
+
         private IReadingRepository readingRepository;
 
         public ValuesController(IReadingRepository readingRepository)
@@ -19,12 +21,17 @@ namespace sensor_reading_backend.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<string> Get()
+        public ActionResult Get()
         {
+            // Schedule for every 20 seconds
             RecurringJob.AddOrUpdate(
-                () => GenerateReadings(), Cron.Minutely);
+                () => GenerateReadings(), "0,20 * * * * *");
 
-            return "STARTED GENERATING READINGS";
+            // Cache the last request time and update it
+            var cachedLastRequestTime = lastRequestTime;
+            lastRequestTime = DateTime.Now;
+
+            return Ok(readingRepository.GetReadings(cachedLastRequestTime));
         }
 
         public void GenerateReadings()
@@ -45,31 +52,6 @@ namespace sensor_reading_backend.Controllers
 
             readingRepository.SaveReading(reading);
 
-        }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
