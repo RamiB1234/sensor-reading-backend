@@ -1,4 +1,5 @@
 ﻿using Hangfire;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using sensor_reading_backend.Models.Entities;
 using sensor_reading_backend.Models.Repository;
@@ -21,6 +22,7 @@ namespace sensor_reading_backend.Controllers
 
         // GET api/values
         [HttpGet]
+        [EnableCors("CorsPolicy")]
         public ActionResult Get()
         {
             // Schedule for every 20 seconds

@@ -45,6 +45,16 @@ namespace sensor_reading_backend
             // Mapping dependencies:
             services.AddTransient<IReadingRepository, EFReadingRepository>();
 
+            // For allowing Cors origin request (for development):
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
