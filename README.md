@@ -1,7 +1,7 @@
 # Sensor Reading Backend
 
 ## Introduction
-In this project, random sensor readings are generated every 20 seconds and saved to a localDB. There is an avilable `GET` http endopoint that provides the readings that were generated since the previous request. The previous request timestamp is stored in a static variable.
+In this project, random sensor readings are generated every 20 seconds and saved to a localDB. There is an avilable `GET` http endpoint that provides the readings that were generated since the previous request. The previous request timestamp is stored in a static variable.
 
 ## Tech Details
 - Project is written in `ASP.NET MVC Core 2` framework. Where I applied `MVC Pattern`. There is no view component since it's an API project.
