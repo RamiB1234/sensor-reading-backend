@@ -43,7 +43,7 @@ namespace sensor_reading_backend.Controllers
                 Timestamp = DateTime.Now
             };
 
-            var t = reading;
+            readingRepository.SaveReading(reading);
 
         }
 
